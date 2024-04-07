@@ -39,10 +39,10 @@ public class SerialConnect extends Thread implements SerialPortEventListener { /
     String[] msgArr = new String[11];
 
 
-    @Override
     /**
      * SerialPort EventListene 的方法,持续监听端口上是否有数据流
      */
+    @Override
     public void serialEvent(SerialPortEvent event) {//
 
         switch (event.getEventType()) {
@@ -74,20 +74,20 @@ public class SerialConnect extends Thread implements SerialPortEventListener { /
                         if (numBytes > 0) {
                             msgQueue.add(new Date() + "真实收到的数据为：-----" + new String(readBuffer).trim());
                             BodyPart bodyPart = bodyUtil.transBody(readBuffer);
-                                bodyPartArr[i] = bodyPart;
-                                msgArr[i] = bodyPart.toString();
-                                i = i + 1;
-                                connect.connectTo(bodyPart);
-                                if(i == 10){
-                                    j = j + 1;
-                                    mod = bodyUtil.caMod(bodyPartArr);
-                                    totalMod = totalMod + mod;
-                                    msgArr[i] = String.valueOf(totalMod);
-                                    if (j == 5){
-                                        WebSocketServer.sendMessage(Arrays.toString(msgArr));
-                                        j = 0;
-                                    }
-                                    i = 0;
+                            bodyPartArr[i] = bodyPart;
+                            msgArr[i] = bodyPart.toString();
+                            i = i + 1;
+                            connect.connectTo(bodyPart);
+                            if(i == 10){
+                                j = j + 1;
+                                mod = bodyUtil.caMod(bodyPartArr);
+                                totalMod = totalMod + mod;
+                                msgArr[i] = String.valueOf(totalMod);
+                                if (j == 5){
+                                    WebSocketServer.sendMessage(Arrays.toString(msgArr));
+                                    j = 0;
+                                }
+                                i = 0;
                             }
                         } else {
                             msgQueue.add("没有读到数据");
