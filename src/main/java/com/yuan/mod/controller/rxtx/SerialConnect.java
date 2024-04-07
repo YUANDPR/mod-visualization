@@ -1,13 +1,6 @@
 package com.yuan.mod.controller.rxtx;
 
-/**
- * @Package com.yuan
- * @ClassName SerialConnect
- * @Description TODO
- * @Author YUAND
- * @Date 2024/2/14 22:30
- * @Version 1.0
- */
+
 import java.io.*;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
@@ -20,7 +13,14 @@ import com.yuan.mod.controller.websocket.WebSocketServer;
 import gnu.io.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-
+/**
+ * @Package com.yuan
+ * @ClassName SerialConnect
+ * @Description TODO
+ * @Author YUAND
+ * @Date 2024/2/14 22:30
+ * @Version 1.0
+ */
 @Controller
 public class SerialConnect extends Thread implements SerialPortEventListener { // SerialPortEventListener
     static CommPortIdentifier portId; // 串口通信管理类
