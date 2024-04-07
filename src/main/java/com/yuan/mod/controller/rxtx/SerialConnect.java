@@ -29,7 +29,7 @@ public class SerialConnect extends Thread implements SerialPortEventListener { /
     static OutputStream outputStream;// 向串口输出的流
     static SerialPort serialPort; // 串口的引用
     // 堵塞队列用来存放读到的数据
-    private BlockingQueue<String> msgQueue = new LinkedBlockingQueue<String>();
+    private BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>();
     private int totalMod = 0;
     private  BodyUtil bodyUtil = new BodyUtil();
     private Connect connect = new Connect();
