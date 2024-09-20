@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mod_data?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 123456
+
+mybatis:
+  #mapper配置文件
+  mapperLocations: classpath*:mapper/*.xml
+  # 搜索指定包别名
+  typeAliasesPackage: com.yuan.mod.core.pojo
+  # 加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml

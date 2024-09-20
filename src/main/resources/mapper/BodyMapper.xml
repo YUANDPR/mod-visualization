@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yuan.mod.mapper.BodyMapper">
+
+    <insert id="insertAll" parameterType="com.yuan.mod.core.pojo.BodyPart">
+        insert into body_part(name, y_axis, p_axis, r_axis, finger_pressure,
+                              palm_pressure, m_time, isTure, batch)
+        values (#{name}, #{yAxis}, #{pAxis}, #{rAxis}, #{fingerPressure}, #{palmPressure}, #{mTime}, #{isture},
+                #{batch})
+    </insert>
+</mapper>

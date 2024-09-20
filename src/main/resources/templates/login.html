@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+    <title>登录ACC主轴线可视化系统</title>
+    <meta content="Acc主轴线可视化后台管理框架" name="description">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet" th:href="@{/css/font-awesome.min.css}"/>
+    <link href="../static/css/style.min.css" rel="stylesheet" th:href="@{/css/style.min.css}"/>
+    <link href="../static/css/login.min.css" rel="stylesheet" th:href="@{/css/login.min.css}"/>
+    <link href="../static/mod/css/mod-ui.css" rel="stylesheet" th:href="@{/mod/css/mod-ui.css}"/>
+    <!-- 360浏览器急速模式 -->
+    <meta content="webkit" name="renderer">
+    <!-- 避免IE使用兼容模式 -->
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link href="../static/mod-favicon.ico" rel="shortcut icon" th:href="@{mod-favicon.ico}"/>
+    <style type="text/css">label.error {
+        position: inherit;
+    }</style>
+    <script>
+        if (window.top !== window.self) {
+            alert('未登录或登录超时。请重新登录');
+            window.top.location = window.location
+        }
+
+    </script>
+</head>
+<body class="signin">
+<div class="signinpanel">
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="signin-info">
+                <div class="logopanel m-b">
+                    <h1><img alt="[ Acc ]" src="../static/mod.png" th:src="@{/mod.png}"></h1>
+                </div>
+                <div class="m-b"></div>
+                <h2 style="font-size: 20px">欢迎使用 <strong>ACC主轴线可视化后台管理系统</strong></h2>
+                <ul class="m-b">
+                    <br/>
+                    <li style="font-size: 18px"><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 我们都是企业家</li>
+                    <br/>
+                    <li style="font-size: 18px"><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 我们充满好奇</li>
+                    <br/>
+                    <li style="font-size: 18px"><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 我们彼此信赖</li>
+                    <br/>
+                    <li style="font-size: 18px"><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 我们携手并进</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <form autocomplete="off" id="signupForm">
+                <h4 class="no-margins">登录：</h4>
+                <input class="form-control uname" name="username" placeholder="用户名" type="text"/>
+                <input class="form-control pword" name="password" placeholder="密码" type="password"/>
+                <div class="row m-t" th:if="${captchaEnabled==true}">
+                    <div class="col-xs-6">
+                        <input class="form-control code" maxlength="5" name="validateCode" placeholder="验证码"
+                               type="text"/>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="javascript:void(0);" title="点击更换验证码">
+                            <img class="imgcode" th:src="@{/captcha/captchaImage(type=${captchaType})}" width="85%"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="checkbox-custom" th:classappend="${captchaEnabled==false} ? 'm-t'" th:if="${isRemembered}">
+                    <input id="rememberme" name="rememberme" type="checkbox"> <label for="rememberme">记住我</label>
+                </div>
+                <button class="btn btn-success btn-block" data-loading="正在验证登录，请稍候..." id="btnSubmit">登录
+                </button>
+                <p class="m-t-md">精益求精，客户省心</p>
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left">
+            Copyright © 2024-2024 accelleronindustries.com All Rights Reserved. <br>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript"> var ctx = [[@{/}]]; var captchaType = [[${captchaType}]]; var captchaEnabled = [[${captchaEnabled}]];</script>
+<!--[if lte IE 8]>
+<script>window.location.href = ctx + 'html/ie.html';</script><![endif]-->
+<!-- 全局js -->
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/ajax/libs/validate/jquery.validate.min.js"
+        th:src="@{/ajax/libs/validate/jquery.validate.min.js}"></script>
+<script src="../static/ajax/libs/layer/layer.min.js" th:src="@{/ajax/libs/layer/layer.min.js}"></script>
+<script src="../static/ajax/libs/blockUI/jquery.blockUI.js" th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+<script src="../static/mod/js/mod-ui.js" th:src="@{/mod/js/mod-ui.js}"></script>
+<script src="../static/mod/login.js" th:src="@{/mod/login.js}"></script>
+</body>
+</html>
