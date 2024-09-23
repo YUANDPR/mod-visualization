@@ -41,6 +41,7 @@ public class WebSocketServer {
      */
     @OnOpen
     public void onOpen(Session session) {
+
         log.info("有新连接加入！");
         WebSocketServer.session = session;
         startSerialListener();
