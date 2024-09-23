@@ -41,6 +41,7 @@ public class WebSocketServer {
      */
     @OnOpen
     public void onOpen(Session session) {
+        log.info("有新连接加入！");
         WebSocketServer.session = session;
         startSerialListener();
     }
@@ -50,7 +51,7 @@ public class WebSocketServer {
      */
     @OnClose
     public void onClose() {
-
+        log.info("有一连接关闭！当前在线人数为：{}", webSocketMap.size());
     }
 
     /**
@@ -58,7 +59,7 @@ public class WebSocketServer {
      **/
     @OnMessage
     public void onMessage(String message, Session session) {
-
+        log.info("来自客户端的消息：{}", message);
     }
 
     /**
@@ -66,6 +67,7 @@ public class WebSocketServer {
      */
     @OnError
     public void onError(Session session, Throwable error) {
+        log.error("发生错误：{}，Session ID： {}", error.getMessage(), session.getId());
     }
 
 
