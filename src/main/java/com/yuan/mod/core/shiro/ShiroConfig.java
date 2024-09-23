@@ -170,6 +170,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/mod-favicon.ico**", "anon");
         filterChainDefinitionMap.put("/mod.png**", "anon");
         filterChainDefinitionMap.put("/html/**", "anon");
+        filterChainDefinitionMap.put("/assets/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
         filterChainDefinitionMap.put("/fonts/**", "anon");

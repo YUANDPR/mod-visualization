@@ -1,16 +1,13 @@
 package com.yuan.mod.service.impl;
 
-import com.yuan.mod.core.constant.Constants;
 import com.yuan.mod.core.constant.ShiroConstants;
 import com.yuan.mod.core.exception.UserPasswordNotMatchException;
 import com.yuan.mod.core.pojo.User;
-import com.yuan.mod.core.util.MessageUtils;
 import com.yuan.mod.service.PasswordService;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
