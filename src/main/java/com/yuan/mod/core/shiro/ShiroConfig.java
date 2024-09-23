@@ -85,7 +85,7 @@ public class ShiroConfig {
      */
     @Bean
     public EhCacheManager getEhCacheManager() {
-        net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("acc");
+        net.sf.ehcache.CacheManager cacheManager = net.sf.ehcache.CacheManager.getCacheManager("mod");
         EhCacheManager em = new EhCacheManager();
         if (StringUtils.isNull(cacheManager)) {
             em.setCacheManager(new net.sf.ehcache.CacheManager(getCacheManagerConfigFileInputStream()));
@@ -167,8 +167,8 @@ public class ShiroConfig {
         // Shiro连接约束配置，即过滤链的定义
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 对静态资源设置匿名访问
-        filterChainDefinitionMap.put("/acc-favicon.ico**", "anon");
-        filterChainDefinitionMap.put("/acc.png**", "anon");
+        filterChainDefinitionMap.put("/mod-favicon.ico**", "anon");
+        filterChainDefinitionMap.put("/mod.png**", "anon");
         filterChainDefinitionMap.put("/html/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/docs/**", "anon");
@@ -176,14 +176,12 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/img/**", "anon");
         filterChainDefinitionMap.put("/ajax/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
-        filterChainDefinitionMap.put("/acc/**", "anon");
-        filterChainDefinitionMap.put("/flow/**", "anon");
-        filterChainDefinitionMap.put("/echarts/**", "anon");
-        filterChainDefinitionMap.put("/19/**", "anon");
+        filterChainDefinitionMap.put("/mod/**", "anon");
         filterChainDefinitionMap.put("/captcha/captchaImage**", "anon");
 
         filterChainDefinitionMap.put("/orders/**", "anon");
-
+        // 不需要拦截的访问
+        filterChainDefinitionMap.put("/login", "anon");
         // 退出 logout地址，shiro去清除session
         filterChainDefinitionMap.put("/logout", "logout");
         // 系统权限列表
@@ -192,7 +190,7 @@ public class ShiroConfig {
         // 注销成功，则跳转到指定页面
         filters.put("logout", logoutFilter());
         shiroFilterFactoryBean.setFilters(filters);
-
+        filterChainDefinitionMap.put("/**", "user");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
 
         return shiroFilterFactoryBean;
