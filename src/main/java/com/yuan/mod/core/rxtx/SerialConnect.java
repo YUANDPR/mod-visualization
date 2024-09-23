@@ -29,19 +29,19 @@ import java.util.concurrent.LinkedBlockingQueue;
 @Component
 @Lazy
 public class SerialConnect extends Thread implements SerialPortEventListener { // SerialPortEventListener
+    private final String[] msgArr = new String[11];
+    // 堵塞队列用来存放读到的数据
+    private final BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>();
+    private final BodyUtils bodyUtil = new BodyUtils();
+    private final BodyPart[] bodyPartArr = new BodyPart[10];
     public OutputStream outputStream;// 向串口输出的流
     private CommPortIdentifier portId; // 串口通信管理类
     private Enumeration<?> portList; // 有效连接上的端口的枚举
     private SerialPort serialPort; // 串口的引用
     private InputStream inputStream; // 从串口来的输入流
-    private final String[] msgArr = new String[11];
-    // 堵塞队列用来存放读到的数据
-    private final BlockingQueue<String> msgQueue = new LinkedBlockingQueue<>();
     private int totalMod = 0;
-    private final BodyUtils bodyUtil = new BodyUtils();
     private int i = 0;
     private int j = 0;
-    private final BodyPart[] bodyPartArr = new BodyPart[10];
     @Autowired
     private BodyMapper bodymapper;
 

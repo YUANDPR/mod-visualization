@@ -4,7 +4,6 @@ package com.yuan.mod.core.websocket;
 import com.yuan.mod.core.rxtx.SerialConnect;
 import com.yuan.mod.core.util.SpringContextUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Component;
 
